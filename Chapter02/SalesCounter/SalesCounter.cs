@@ -17,7 +17,7 @@ namespace SalesCounter {
 
         //売上データを読み込み、Saleオブジェクトのリストを返す
         private static IEnumerable<Sale> ReadSales(string filePath) {
-            List<Sale> sales = new List<Sale>();
+            var sales = new List<Sale>();
             string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines) {
                 string[] items = line.Split(',');
@@ -34,7 +34,7 @@ namespace SalesCounter {
 
         //店舗別の売り上げを求める
         public IDictionary<string,int> GetPerStoreSalea() {
-            Dictionary<string,int> dict=new Dictionary<string,int>();
+            var dict=new Dictionary<string,int>();
             foreach(Sale sale in _sales) {
                 if (dict.ContainsKey(sale.ShopName))
                     dict[sale.ShopName]+= sale.Amount;
