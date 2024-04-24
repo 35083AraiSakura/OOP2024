@@ -8,14 +8,10 @@ using System.Threading.Tasks;
 namespace SalesCounter {
     internal class Program {
         static void Main(string[] args) {
-
-
-            List<Sale> sales = ReadSales(@"C:\Users\infosys\source\repos\OOP2024\Chapter02\SalesCounter\bin\Debug\data\Sales.csv");
-
-            foreach (Sale sale in sales) {
-                //Console.WriteLine(sale.ShopName+" "+sale.productCategory+" "+ sale.Amount);
-                //Console.WriteLine("店名 {0} カテゴリー {1} 売り上げ {2}", sale.ShopName, sale.productCategory, sale.Amount);
-                Console.WriteLine($"店名 {sale.ShopName} カテゴリー {sale.productCategory} 売り上げ {sale.Amount}" );
+            SalesCounter sales = new SalesCounter(ReadSales(@"data/sales.csv"));
+            Dictionary<string, int> amountPerStore = sales.GetPerStoreSalea();
+            foreach(KeyValuePair<string, int> obj in amountPerStore) {
+                Console.WriteLine("{0} {1}", obj.Key, obj.Value);
             }
         }
 
