@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BallApp {
-    internal class SoccerBall : Obj {
+    internal class TennisBall : Obj {
 
-        public SoccerBall(double xp, double yp)
-            : base(xp - 25, yp - 25, @"Picture\soccer_ball.png") {
-            MoveX = 10;     //移動量設定 
-            MoveY = 10;
+        public TennisBall(double xp, double yp)
+            : base(xp - 12, yp - 12, @"Picture\tennis_ball.png") {
+            MoveX = 5;     //移動量設定 
+            MoveY = 5;
         }
 
         public override bool Move() {
@@ -21,7 +22,7 @@ namespace BallApp {
                 MoveY = -MoveY;
             }
 
-            PosX += MoveX;
+            PosX -= MoveX;
             PosY += MoveY;
 
             return true;
