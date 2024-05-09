@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace BallApp {
     internal class TennisBall : Obj {
+        public static int tennis_count { get; set; }
+        Random rand = new Random();
 
         public TennisBall(double xp, double yp)
             : base(xp - 12, yp - 12, @"Picture\tennis_ball.png") {
-            MoveX = 5;     //移動量設定 
-            MoveY = 5;
+            MoveX = rand.Next(-10,10);     //移動量設定 
+            MoveY = rand.Next(-10,10);
+
+            tennis_count++;
         }
 
         public override bool Move() {
@@ -22,7 +27,7 @@ namespace BallApp {
                 MoveY = -MoveY;
             }
 
-            PosX -= MoveX;
+            PosX += MoveX;
             PosY += MoveY;
 
             return true;

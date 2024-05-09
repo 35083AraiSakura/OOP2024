@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace BallApp {
     internal class SoccerBall : Obj {
+        public static int soccer_count {  get; set; }
+          Random rand = new Random();
 
         public SoccerBall(double xp, double yp)
             : base(xp - 25, yp - 25, @"Picture\soccer_ball.png") {
-            MoveX = 10;     //移動量設定 
-            MoveY = 10;
+            MoveX = rand.Next(-10, 10);     //移動量設定 
+            MoveY = rand.Next(-10, 10);
+
+            soccer_count++;
         }
 
         public override bool Move() {

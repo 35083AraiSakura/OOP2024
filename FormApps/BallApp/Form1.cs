@@ -48,6 +48,8 @@ namespace BallApp {
 
             balls.Add(ball);
             pbs.Add(pb);
+            this.Text = "BallApp SoccerBall: " + SoccerBall.soccer_count + "TennisBall:" + TennisBall.tennis_count;
+
         }
     }
 }
