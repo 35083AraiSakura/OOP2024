@@ -24,6 +24,14 @@ namespace BallApp {
             } else if (direction == Keys.Left) {
                 PosX -= MoveX;
             }
+
+            if (PosX > 640 ) {
+                PosX = 640;
+            }else if(PosX<0) {
+                PosX = 0;
+            }            
+
+
             return true;
         }
     }
