@@ -5,6 +5,11 @@ namespace BallApp {
         private List<Obj> balls = new List<Obj>();        //ボールインスタンス格納用
         private List<PictureBox> pbs = new List<PictureBox>();        //表示用
 
+        //バー用
+        private Bar bar;
+        private PictureBox pbBar;
+
+
         //コンストラクタ
         public Form1() {
             InitializeComponent();
@@ -12,7 +17,13 @@ namespace BallApp {
 
         //フォームが最初にロードされるときに一度だけ実行される
         private void Form1_Load(object sender, EventArgs e) {
+            bar = new Bar(340, 500);
+            pbBar = new PictureBox();
 
+            pbBar.Image = bar.Image;
+            pbBar.Size = new Size(150, 10);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
+            pbBar.Parent = this;
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
@@ -22,7 +33,7 @@ namespace BallApp {
             }
         }
 
-
+        //マウスクリックイベントハンドラ　
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
             PictureBox pb = new PictureBox(); //画像を表示するコントロール
             Obj ball = null;
@@ -50,6 +61,11 @@ namespace BallApp {
             pbs.Add(pb);
             this.Text = "BallApp SoccerBall: " + SoccerBall.soccer_count + "TennisBall:" + TennisBall.tennis_count;
 
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e) {
+            bar.Move(e.KeyData);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
         }
     }
 }
