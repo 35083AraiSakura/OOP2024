@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Exercise02 {
@@ -45,7 +46,7 @@ namespace Exercise02 {
                 if (string.IsNullOrEmpty(line)) {
                     break;
                 } else {
-                    var query = names.FindIndex(x => x.StartsWith(line));
+                    var query = names.FindIndex(x => x == line);
                     Console.WriteLine(query);
                     Console.WriteLine();
                 }
@@ -53,17 +54,22 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<string> names) {
-            //IEnumerable<string> query = names.Count(s=>)
+            var count = names.Count(s => s.Contains('o'));
+            Console.WriteLine(count);
         }
 
         private static void Exercise2_3(List<string> names) {
-
+            var count = names.Where(s => s.Contains('o'));
+            foreach (var item in count) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise2_4(List<string> names) {
-
+            var pick = names.Where(s => s[0] == 'B')
+                            .Select(s => new { s.Length, s });
+            foreach (var item in pick)
+                Console.WriteLine(item.s + "," + item.Length);
         }
-
-
     }
 }
