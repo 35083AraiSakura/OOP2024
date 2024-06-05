@@ -25,11 +25,17 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(int[] numbers) {
-            
+            var max = numbers.Max();
+            Console.WriteLine(max);
         }
 
         private static void Exercise1_2(int[] numbers) {
+            var lastN = numbers.Skip(numbers.Length - 2).ToArray();
 
+            foreach (var num in lastN)
+            {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_3(int[] numbers) {
