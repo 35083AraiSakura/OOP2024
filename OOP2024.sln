@@ -59,20 +59,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise02", "Chapter05\演
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise03", "Chapter05\演習問題\Exercise03\Exercise03.csproj", "{F748B35F-B300-497C-B80E-0D90E39E7ED4}"
 EndProject
-Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "Exercise04", "Chapter05\演習問題\Exercise04\bin\Debug\Exercise04.exe", "{CB2D8CE7-EE96-4132-853D-39C9D594873B}"
-	ProjectSection(DebuggerProjectSystem) = preProject
-		PortSupplier = 00000000-0000-0000-0000-000000000000
-		Executable = C:
-		RemoteMachine = C4238
-		StartingDirectory = 
-		Environment = visualstudioedition=Microsoft Visual Studio Community 2022	os=Windows_NT	threadedwaitdialogdpicontext=-4	programw6432=C:\Program Files	systemroot=C:\Windows	processor_architecture=AMD64	visualstudiodir=C:\Users\infosys\Documents\Visual Studio 2022	allusersprofile=C:\ProgramData	homedrive=C:	onedrive=C:\Users\infosys\OneDrive	homepath=\Users\infosys	systemdrive=C:	vslang=1041	userprofile=C:\Users\infosys	tmp=C:\Users\infosys\AppData\Local\Temp	commonprogramfiles=C:\Program Files\Common Files	sessionname=Console	vs_perf_session_gcheapcount=2	vspermonitordpiawarenessenabled.12248=TRUE	programdata=C:\ProgramData	gcexpconfigusedinsession=3	temp=C:\Users\infosys\AppData\Local\Temp	servicehublogsessionkey=32A29280	public=C:\Users\Public	commonprogramfiles(x86)=C:\Program Files (x86)\Common Files	userdomain_roamingprofile=C4238	signinwithhometenantonly=False	username=infosys	efc_21280=1	xamarin_android_regkey=SOFTWARE\Xamarin\VisualStudio\17.0_064dc57d\Android	psmodulepath=C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules	processor_identifier=Intel64 Family 6 Model 165 Stepping 5, GenuineIntel	vsskuedition=Community	pkgdefapplicationconfigfile=C:\Users\infosys\AppData\Local\Microsoft\VisualStudio\17.0_064dc57d\devenv.exe.config	path=D:\app\loadmin\product\12.1.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files\Git\cmd;C:\Users\infosys\AppData\Local\Microsoft\WindowsApps;C:\Users\infosys\.dotnet\tools;C:\Users\infosys\AppData\Local\GitHubDesktop\bin	pathext=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC	appdata=C:\Users\infosys\AppData\Roaming	driverdata=C:\Windows\System32\Drivers\DriverData	userdomain=C4238	windir=C:\Windows	logonserver=\\C4238	programfiles(x86)=C:\Program Files (x86)	mono_android_path=C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Xamarin\Android	vsappiddir=C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\	processor_level=6	vsappidname=devenv.exe	computername=C4238	msbuildloadmicrosofttargetsreadonly=true	number_of_processors=20	fps_browser_app_profile_string=Internet Explorer	visualstudioversion=17.0	commonprogramw6432=C:\Program Files\Common Files	comspec=C:\Windows\system32\cmd.exe	programfiles=C:\Program Files	fps_browser_user_profile_string=Default	localappdata=C:\Users\infosys\AppData\Local	processor_revision=a505	
-		LaunchingEngine = 00000000-0000-0000-0000-000000000000
-		UseLegacyDebugEngines = No
-		LaunchSQLEngine = Yes
-		AttachLaunchAction = No
-		IORedirection = Auto
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise04", "Chapter05\演習問題\Exercise04\Exercise04\Exercise04.csproj", "{DA8A913A-775F-43EA-A053-3151EF9E2C37}"
 EndProject
 Global
@@ -211,10 +197,6 @@ Global
 		{F748B35F-B300-497C-B80E-0D90E39E7ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F748B35F-B300-497C-B80E-0D90E39E7ED4}.Release|x86.ActiveCfg = Release|Any CPU
 		{F748B35F-B300-497C-B80E-0D90E39E7ED4}.Release|x86.Build.0 = Release|Any CPU
-		{CB2D8CE7-EE96-4132-853D-39C9D594873B}.Debug|Any CPU.ActiveCfg = Release|x86
-		{CB2D8CE7-EE96-4132-853D-39C9D594873B}.Debug|x86.ActiveCfg = Release|x86
-		{CB2D8CE7-EE96-4132-853D-39C9D594873B}.Release|Any CPU.ActiveCfg = Release|x86
-		{CB2D8CE7-EE96-4132-853D-39C9D594873B}.Release|x86.ActiveCfg = Release|x86
 		{DA8A913A-775F-43EA-A053-3151EF9E2C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA8A913A-775F-43EA-A053-3151EF9E2C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8A913A-775F-43EA-A053-3151EF9E2C37}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -250,7 +232,6 @@ Global
 		{928FA50B-F9D7-49D6-8E88-7AD18774F445} = {B5EE239F-70D8-478C-BE0F-D7000730794D}
 		{F9593B1F-2C45-434C-8850-C065F1FA83C5} = {B5EE239F-70D8-478C-BE0F-D7000730794D}
 		{F748B35F-B300-497C-B80E-0D90E39E7ED4} = {B5EE239F-70D8-478C-BE0F-D7000730794D}
-		{CB2D8CE7-EE96-4132-853D-39C9D594873B} = {E3385A55-CD76-458D-B26E-7C9AA250760B}
 		{DA8A913A-775F-43EA-A053-3151EF9E2C37} = {B5EE239F-70D8-478C-BE0F-D7000730794D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
