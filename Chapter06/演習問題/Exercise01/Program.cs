@@ -38,7 +38,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(int[] numbers) {
-            var strings = numbers.Select(x => x.ToString()).ToArray();
+            var strings = numbers.Select(x => x.ToString());
 
             foreach (var num in strings) {
                 Console.WriteLine(num);
@@ -46,7 +46,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(int[] numbers) {
-            var number = numbers.OrderBy(n => -n);
+            var number = numbers.OrderBy(n => n);
             var take_list = number.Take(3).ToList();
 
             foreach (var take in take_list) {
