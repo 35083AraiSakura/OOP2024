@@ -30,24 +30,36 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            var lastN = numbers.Skip(numbers.Length - 2).ToArray();
+            var last = numbers.Skip(numbers.Length - 2).ToArray();
 
-            foreach (var num in lastN)
-            {
-                Console.WriteLine(num);
+            foreach (var last_num in last) {
+                Console.WriteLine(last_num);
             }
         }
 
         private static void Exercise1_3(int[] numbers) {
+            var strings = numbers.Select(x => x.ToString()).ToArray();
 
+            foreach (var num in strings) {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_4(int[] numbers) {
+            var number = numbers.OrderBy(n => -n);
+            var take_list = number.Take(3).ToList();
+
+            foreach (var take in take_list) {
+                Console.WriteLine(take);
+            }
 
         }
 
         private static void Exercise1_5(int[] numbers) {
+            var dep_numbers = numbers.Distinct();
+            var count = dep_numbers.Count(n => n > 10);
 
+            Console.WriteLine(count);
         }
     }
 }
