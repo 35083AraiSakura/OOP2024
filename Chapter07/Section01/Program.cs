@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 
 namespace Section01 {
     internal class Program {
+        static private Dictionary<string, string> prefOffinceDict = new Dictionary<string, string>();
         static void Main(string[] args) {
-
-            var prefOffinceDict = new Dictionary<string, string>();
+            String country, ken, select;
+            bool judge = true;
 
             Console.WriteLine("県庁所在地の登録");
 
-            for (int i = 0; i < 5; i++) {
+            while(true) {
                 Console.Write("都道府県：");
-                var country = Console.ReadLine();
-                Console.Write("県庁所在地：");
-                var ken = Console.ReadLine();
+                country = Console.ReadLine();
+                if (country == null)
+                    break;
 
+                Console.Write("県庁所在地：");
+                ken = Console.ReadLine();
                 if (prefOffinceDict.ContainsKey(country)) {
                     Console.Write("同じ県が登録されています。上書きしますか? Yes/No：");
-                    var select = Console.ReadLine();
+                    select = Console.ReadLine();
                     if (select == "Yes") {
                         prefOffinceDict.Remove(country);
                         prefOffinceDict.Add(country, ken);
@@ -38,7 +41,7 @@ namespace Section01 {
 
 
 
-            bool judge = true;
+
             while (judge) {
                 var sel = menu();
 
