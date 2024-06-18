@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Test02 {
-    
+
     class Person {
         public string Name { get; set; }  //名前
         public int Age { get; set; }      //年齢
@@ -52,7 +52,7 @@ namespace Test02 {
             Console.WriteLine("問題７：体重70kg以下の人を体重の昇順で全て表示（名前と体重を出力）");
             Exercise07(persons);
             Console.WriteLine("\n-----");
-            
+
             Console.WriteLine("問題８：名前に「山」の漢字が含まれている人全て表示（名前のみ出力）");
             Exercise08(persons);
             Console.WriteLine("\n-----");
@@ -67,47 +67,47 @@ namespace Test02 {
         //問題１　合計値を表示
         //　　　　出力結果【618】
         private static void Exercise01(List<int> numbers) {
-
-
-
+            var sum = numbers.Sum();
+            Console.WriteLine(sum);
         }
 
         //問題２　偶数の最大値を表示
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
-
-
-
+            var max_g = numbers.Where(s => s % 2 == 0).Max();
+            Console.WriteLine(max_g);
         }
         //問題３　奇数のみを降順に並べて表示（遅延実行とする）
         //　　　　出力結果【91 87 53 35 31 17】
         private static void Exercise03(List<int> numbers) {
-
-
-
+            var sort = numbers.Where(s => s % 2 == 1).OrderByDescending(s => s);
+            foreach (var num in sort) {
+                Console.Write(num + " ");
+            }
         }
 
         //問題４　10以上50以下の数字のみを表示（即時実行でも可とする）
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
-
-
-
+            var number = numbers.Where(s => s >= 10 && s <= 50);
+            foreach (var num in number) {
+                Console.Write(num + " ");
+            }
         }
 
         //問題５　平均年齢を表示
         //　　　　出力結果【30.2才】
         private static void Exercise05(List<Person> persons) {
-            
-
+            var age = persons.Average(s => s.Age);
+            Console.WriteLine(age + "才");
 
         }
 
         //問題６　身長170cm以上の体重平均を表示
         //　　　　出力結果【72.25kg】
         private static void Exercise06(List<Person> persons) {
-
-
+            var weight = persons.Where(s => s.Height >= 170).Average(s => s.Weight);
+            Console.WriteLine(weight + "kg");
 
         }
 
@@ -116,18 +116,20 @@ namespace Test02 {
         //　　　　　　　　　沖田宏一 59kg
         //　　　　　　　　　片山伸介 65kg】
         private static void Exercise07(List<Person> persons) {
-        
-        
-        
+            var humans = persons.Where(s => s.Weight <= 70).ToArray();
+            foreach (var human in humans) {
+                Console.WriteLine(human.Name + " " + human.Weight + "kg");
+            }
         }
 
         //問題８　名前に「山」の漢字が含まれている人全て表示
         //　　　　出力結果【山田隆司
         //　　　　　　　　　片山伸介】
         private static void Exercise08(List<Person> persons) {
-
-
-
+            var yama = persons.Where(s => s.Name.Contains("山"));
+            foreach (var person in yama) {
+                Console.WriteLine(person.Name);
+            }
         }
     }
 }
