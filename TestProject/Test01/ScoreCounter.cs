@@ -10,7 +10,6 @@ namespace Test01 {
             _score = ReadScore(filePath);
         }
 
-
         //メソッドの概要： StudentScoreデータを読み込み、Studentオブジェクトのリストを返す
         private static IEnumerable<Student> ReadScore(string filePath) {
             var students = new List<Student>();
