@@ -8,20 +8,14 @@ using System.Threading.Tasks;
 namespace Section02 {
     internal class Program {
         static void Main(string[] args) {
-
             var lines = File.ReadAllLines("sample.txt");
             var we = new WordsExtractor(lines);
-
             foreach (var word in we.Extract()) {
-                Console.WriteLine(word);    
+                Console.WriteLine(word);
             }
-
-
-
-
-
-
-
+        }
+    }
+}
 
             //var dict = new Dictionary<MonthDay, string> {
             //   { new MonthDay(3, 5), "珊瑚の日" },
@@ -30,8 +24,4 @@ namespace Section02 {
             //};
             //var md = new MonthDay(8, 4);
             //var s = dict[md];
-            //Console.WriteLine(s);
-
-        }
-    }
-}
+            //Console.WriteLine(s);        
