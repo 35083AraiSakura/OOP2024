@@ -34,7 +34,7 @@ namespace Section01 {
 
             //あなたは生まれてから今日で×日目です
             var today = DateTime.Today;
-            TimeSpan diff = today.Date - days.Date;
+            TimeSpan diff = today - days;
             Console.WriteLine("あなたは生まれてから今日で{0}日目です", diff.Days + 1);
         }
     }
