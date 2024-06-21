@@ -27,15 +27,14 @@ namespace Section04 {
 
             if (abbrs.Remove("NPT"))
                 Console.WriteLine(abbrs.Count);
-            else 
+            else
                 Console.WriteLine("削除できません");
 
             Console.WriteLine();
 
             //7.2.4
-            foreach (var abbr in abbrs.Where(x=>x.Key.Length==3).ToList())
-            {
-                Console.WriteLine(abbr.Key, abbr.Value);
+            foreach (var abbr in abbrs.Where(x => x.Key.Length == 3).ToList()) {
+                Console.WriteLine(abbr.Key + " = " + abbr.Value);
             }
 
 
