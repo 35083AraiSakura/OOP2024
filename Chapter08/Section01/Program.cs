@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace Section01 {
     internal class Program {
         static void Main(string[] args) {
+
             //var birthday = new DateTime(2004, 4, 19);
             Console.Write("生年月日を入力\n年：");
             var year = int.Parse(Console.ReadLine());
@@ -19,36 +21,21 @@ namespace Section01 {
 
             Console.WriteLine();
 
-            var days=new DateTime(year, month, day);
-            var week=days.DayOfWeek;
+            var days = new DateTime(year, month, day);
 
+            var culture = new CultureInfo("ja-JP");
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
+
+            //あなたは平成×年×月×日×曜日に生まれました
             Console.Write("あなたは");
-            switch (week) {
-                case DayOfWeek.Sunday:
-                    Console.Write("日");
-                    break;
-                case DayOfWeek.Monday:
-                    Console.Write("月");
-                    break;
-                case DayOfWeek.Tuesday:
-                    Console.Write("火");
-                    break;
-                case DayOfWeek.Wednesday:
-                    Console.Write("日");
-                    break;
-                case DayOfWeek.Thursday:
-                    Console.Write("日");
-                    break;
-                case DayOfWeek.Friday:
-                    Console.Write("日");
-                    break;
-                case DayOfWeek.Saturday:
-                    Console.Write("日");
-                    break;                
-            }
-            Console.WriteLine("曜日に生まれました");
+            Console.Write(days.ToString("ggyy年M月d日", culture));
+            Console.Write(days.ToString("dddd"));
+            Console.WriteLine("に生まれました");
 
-            
+            //あなたは生まれてから今日で×日目です
+            var today = DateTime.Today;
+            TimeSpan diff = today.Date - days.Date;
+            Console.WriteLine("あなたは生まれてから今日で{0}日目です", diff.Days + 1);
         }
     }
 }
