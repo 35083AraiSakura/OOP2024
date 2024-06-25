@@ -34,9 +34,17 @@ namespace DateTimeApp {
 
         //îNóÓ
         private void btOld_Click(object sender, EventArgs e) {
-        //    var days = dtpBirthday.Value;
-        //    var today = DateTime.Today;
-        //    int age=GetAge(days, today);
+            var days = dtpBirthday.Value;
+            var today = DateTime.Today;
+            int age = GetAge(days, today);
+            tbDisp.Text = "åªç›" + age + "çŒ";
+        }
+        private int GetAge(DateTime days, DateTime today) {
+            var age = today.Year - days.Year;
+            if (today < days.AddDays(age)) {
+                age--;
+            }
+            return age;
         }
     }
 }
