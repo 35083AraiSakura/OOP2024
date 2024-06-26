@@ -17,19 +17,43 @@ namespace Exercise01 {
                         today.ToString("ggyy”NMŒd“ú (dddd)", culture);
         }
 
-        //8.2       
+        //8.2
         private void btEx8_2_Click(object sender, EventArgs e) {
-            //var today = DateTime.Now;
-            //Console.Write("0(“ú)-6(“y)“ü—ÍF");
-            //var week = int.Parse(Console.ReadLine());
-            //var nextweek = NextDay(today, week);
-            //tbDisp.Text = "Ÿ‚ÌT‚Ì" + week + "—j“ú‚Í" + nextweek;
+            var today = DateTime.Now;
+
+            foreach (var dayofweek in Enum.GetValues(typeof(DayOfWeek))) {
+                var nextweek = (DateTime)NextWeek(today, (DayOfWeek)dayofweek);
+                var txt_now = string.Format("{0:yy/MM/dd}‚ÌŸT‚Ì{1} :", today, (DayOfWeek)dayofweek);
+                var txt_next = string.Format("{0:yy/MM/dd (ddd)}", nextweek);
+                tbDisp.Text += txt_now + txt_next + "\r\n";
+            }
         }
-        private object NextDay(DateTime today, int week) {
-            var days = week - (int)(today.DayOfWeek);
-            if (days <= 0)
-                days += 7;
-            return today.AddDays(days);
+        private object NextWeek(DateTime date, DayOfWeek dayofweek) {
+            var nextweek = date.AddDays(7);
+            var day = (int)dayofweek - (int)date.DayOfWeek;
+            return nextweek.AddDays(day);
+        }
+
+        //8.3
+        private void btEx8_3_Click(object sender, EventArgs e) {
+            var tw = new TimeWach();
+            tw.Start();
+            Thread.Sleep(1000);
+            TimeSpan duration = tw.Stop();
+            var str = String.Format("ˆ—ŠÔ‚Í{0}ƒ~ƒŠ•b‚Å‚µ‚½", duration.TotalMilliseconds);
+            tbDisp.Text = str;
+        }
+    }
+
+    class TimeWach {
+        private DateTime _time;
+
+        public void Start() {
+            _time = DateTime.Now;
+        }
+
+        public TimeSpan Stop() {
+            return DateTime.Now - _time;
         }
     }
 }
