@@ -320,6 +320,7 @@
             btAddRepote.TabIndex = 4;
             btAddRepote.Text = "追加";
             btAddRepote.UseVisualStyleBackColor = true;
+            btAddRepote.Click += btAddRepote_Click;
             // 
             // dtpDate
             // 
