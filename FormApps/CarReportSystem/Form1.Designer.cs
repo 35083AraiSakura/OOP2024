@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             label1 = new Label();
-            dtpDate = new DateTimePicker();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -50,6 +49,7 @@
             dgvCarReport = new DataGridView();
             btReportSave = new Button();
             btAddRepote = new Button();
+            dtpDate = new DateTimePicker();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
@@ -64,14 +64,6 @@
             label1.Size = new Size(50, 25);
             label1.TabIndex = 0;
             label1.Text = "日付";
-            // 
-            // dtpDate
-            // 
-            dtpDate.CalendarFont = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            dtpDate.Location = new Point(105, 11);
-            dtpDate.Name = "dtpDate";
-            dtpDate.Size = new Size(230, 23);
-            dtpDate.TabIndex = 1;
             // 
             // label2
             // 
@@ -328,6 +320,14 @@
             btAddRepote.TabIndex = 4;
             btAddRepote.Text = "追加";
             btAddRepote.UseVisualStyleBackColor = true;
+            // 
+            // dtpDate
+            // 
+            dtpDate.CalendarFont = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            dtpDate.Location = new Point(105, 11);
+            dtpDate.Name = "dtpDate";
+            dtpDate.Size = new Size(230, 23);
+            dtpDate.TabIndex = 1;
             // 
             // Form1
             // 
