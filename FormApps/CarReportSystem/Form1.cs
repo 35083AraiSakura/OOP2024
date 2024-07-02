@@ -87,12 +87,25 @@ namespace CarReportSystem {
 
         //押したら表示
         private void dgvCarReport_Click(object sender, EventArgs e) {
+            if (dgvCarReport.CurrentRow == null) return;
+
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
             cbAuther.Text = (string)dgvCarReport.CurrentRow.Cells["Auther"].Value;
             SetMakerRadioButton((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
             cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
-            pbPicture.Image= (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
+            pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
+        }
+
+        //削除ボタン
+        private void btDeleteReport_Click(object sender, EventArgs e) {
+            listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
+        }
+
+        //修正ボタン
+        private void btModifyReport_Click(object sender, EventArgs e) {
+            
+            dgvCarReport.Refresh();//更新
         }
     }
 }
