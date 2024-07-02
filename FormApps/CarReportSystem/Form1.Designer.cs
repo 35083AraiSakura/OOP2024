@@ -50,6 +50,7 @@
             btReportSave = new Button();
             btAddRepote = new Button();
             dtpDate = new DateTimePicker();
+            ofdPicFileOpen = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
@@ -212,6 +213,7 @@
             btPicOpen.TabIndex = 4;
             btPicOpen.Text = "開く...";
             btPicOpen.UseVisualStyleBackColor = true;
+            btPicOpen.Click += btPicOpen_Click;
             // 
             // btPicDelete
             // 
@@ -222,6 +224,7 @@
             btPicDelete.TabIndex = 4;
             btPicDelete.Text = "削除";
             btPicDelete.UseVisualStyleBackColor = true;
+            btPicDelete.Click += btPicDelete_Click;
             // 
             // pbPicture
             // 
@@ -229,6 +232,7 @@
             pbPicture.Location = new Point(520, 62);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(242, 208);
+            pbPicture.SizeMode = PictureBoxSizeMode.Zoom;
             pbPicture.TabIndex = 5;
             pbPicture.TabStop = false;
             // 
@@ -296,10 +300,13 @@
             dgvCarReport.AllowUserToDeleteRows = false;
             dgvCarReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarReport.Location = new Point(99, 350);
+            dgvCarReport.MultiSelect = false;
             dgvCarReport.Name = "dgvCarReport";
             dgvCarReport.ReadOnly = true;
+            dgvCarReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCarReport.Size = new Size(663, 162);
             dgvCarReport.TabIndex = 7;
+            dgvCarReport.Click += dgvCarReport_Click;
             // 
             // btReportSave
             // 
@@ -330,6 +337,10 @@
             dtpDate.Size = new Size(230, 23);
             dtpDate.TabIndex = 1;
             // 
+            // ofdPicFileOpen
+            // 
+            ofdPicFileOpen.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -358,6 +369,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "試乗レポート管理システム";
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
@@ -395,5 +407,6 @@
         private DataGridView dgvCarReport;
         private Button btReportSave;
         private Button btAddRepote;
+        private OpenFileDialog ofdPicFileOpen;
     }
 }
