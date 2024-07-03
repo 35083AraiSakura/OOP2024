@@ -16,13 +16,27 @@ namespace CarReportSystem {
         private void btAddRepote_Click(object sender, EventArgs e) {
             CarReport carReport = new CarReport {
                 Date = dtpDate.Value,
-                Auther = cbAuther.Text,
+                Author = cbAuthor.Text,
                 Maker = GetRadioBottonMaker(),
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
                 Picture = pbPicture.Image,
             };
             listCarReports.Add(carReport);
+            setcbAuthor(cbAuthor.Text);
+            setcbCarName(cbCarName.Text);
+        }
+
+        //ì¸óÕóöóÇìoò^_ãLò^é“(èdï°Ç»Çµ)
+        private void setcbAuthor(string author) {
+            if (cbAuthor.Items.Contains(author)) return;
+            cbAuthor.Items.Add(author);
+        }
+
+        //ì¸óÕóöóÇìoò^_é‘ñº(èdï°Ç»Çµ)
+        private void setcbCarName(string carName) {
+            if (cbAuthor.Items.Contains(carName)) return;
+            cbCarName.Items.Add(carName);
         }
 
         private CarReport.MakerGroup GetRadioBottonMaker() {
@@ -90,7 +104,7 @@ namespace CarReportSystem {
             if (dgvCarReport.CurrentRow == null) return;
 
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
-            cbAuther.Text = (string)dgvCarReport.CurrentRow.Cells["Auther"].Value;
+            cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
             SetMakerRadioButton((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
             cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
@@ -104,7 +118,13 @@ namespace CarReportSystem {
 
         //èCê≥É{É^Éì
         private void btModifyReport_Click(object sender, EventArgs e) {
-            
+            listCarReports[dgvCarReport.CurrentRow.Index].Date = dtpDate.Value;
+            listCarReports[dgvCarReport.CurrentRow.Index].Author = cbAuthor.Text;
+            listCarReports[dgvCarReport.CurrentRow.Index].Maker = GetRadioBottonMaker();
+            listCarReports[dgvCarReport.CurrentRow.Index].CarName = cbCarName.Text;
+            listCarReports[dgvCarReport.CurrentRow.Index].Report = tbReport.Text;
+            listCarReports[dgvCarReport.CurrentRow.Index].Picture = pbPicture.Image;
+
             dgvCarReport.Refresh();//çXêV
         }
     }

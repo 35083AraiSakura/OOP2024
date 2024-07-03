@@ -40,7 +40,7 @@
             btPicOpen = new Button();
             btPicDelete = new Button();
             pbPicture = new PictureBox();
-            cbAuther = new ComboBox();
+            cbAuthor = new ComboBox();
             cbCarName = new ComboBox();
             btReportOpen = new Button();
             btModifyReport = new Button();
@@ -236,14 +236,14 @@
             pbPicture.TabIndex = 5;
             pbPicture.TabStop = false;
             // 
-            // cbAuther
+            // cbAuthor
             // 
-            cbAuther.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            cbAuther.FormattingEnabled = true;
-            cbAuther.Location = new Point(105, 62);
-            cbAuther.Name = "cbAuther";
-            cbAuther.Size = new Size(291, 29);
-            cbAuther.TabIndex = 6;
+            cbAuthor.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            cbAuthor.FormattingEnabled = true;
+            cbAuthor.Location = new Point(105, 62);
+            cbAuthor.Name = "cbAuthor";
+            cbAuthor.Size = new Size(291, 29);
+            cbAuthor.TabIndex = 6;
             // 
             // cbCarName
             // 
@@ -350,7 +350,7 @@
             ClientSize = new Size(780, 531);
             Controls.Add(dgvCarReport);
             Controls.Add(cbCarName);
-            Controls.Add(cbAuther);
+            Controls.Add(cbAuthor);
             Controls.Add(pbPicture);
             Controls.Add(btPicDelete);
             Controls.Add(btDeleteReport);
@@ -400,7 +400,7 @@
         private Button btPicOpen;
         private Button btPicDelete;
         private PictureBox pbPicture;
-        private ComboBox cbAuther;
+        private ComboBox cbAuthor;
         private ComboBox cbCarName;
         private Button btReportOpen;
         private Button btModifyReport;
