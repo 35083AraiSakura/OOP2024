@@ -13,6 +13,7 @@ namespace CarReportSystem {
             スバル,
             輸入車,
             その他,
+            なし,
         }
 
         [System.ComponentModel.DisplayName("日付")]
