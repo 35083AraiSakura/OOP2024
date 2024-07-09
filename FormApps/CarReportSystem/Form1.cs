@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Diagnostics.Metrics;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -53,7 +54,7 @@ namespace CarReportSystem {
                 cbCarName.Items.Add(carName);
         }
 
-        //選択をクリア
+        //選択をクリア＿関数
         private void inputItemsAllCrear() {
             dtpDate.Value = DateTime.Now;
             cbAuthor.Text = "";
@@ -129,6 +130,11 @@ namespace CarReportSystem {
         //1回だけ呼ばれるやつ
         private void Form1_Load(object sender, EventArgs e) {
             dgvCarReport.Columns["Picture"].Visible = false;
+
+            //交互に色を設定
+            dgvCarReport.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
         }
 
         //押したら表示
@@ -160,7 +166,7 @@ namespace CarReportSystem {
         //修正ボタン_Report
         private void btModifyReport_Click(object sender, EventArgs e) {
             //データがなかったら...
-            if ((dgvCarReport.CurrentRow == null) 
+            if ((dgvCarReport.CurrentRow == null)
                 || (!dgvCarReport.CurrentRow.Selected)) {
                 tslbMessage.Text = "Error";
                 return;
@@ -190,6 +196,79 @@ namespace CarReportSystem {
         //エラー解除_車名
         private void cbCarName_TextChanged(object sender, EventArgs e) {
             tslbMessage.Text = "";
+        }
+
+        //項目のクリア
+        private void btClear_Click(object sender, EventArgs e) {
+            inputItemsAllCrear();
+            dgvCarReport.ClearSelection();
+        }
+
+
+        //保存ボタン
+        private void btReportSave_Click(object sender, EventArgs e) {
+            ReportSaveFile();
+        }
+
+        private void ReportSaveFile() {
+            if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
+                try {
+                    //バイナリ形式でシリアル化
+#pragma warning disable SYSLIB0011 // 型またはメンバーが旧型式です
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011 // 型またはメンバーが旧型式です
+                    using (FileStream fs = File.Open(sfdReportFileSave.FileName, FileMode.Create)) {
+                        bf.Serialize(fs, listCarReports);
+                    }
+                }
+                catch (Exception) {
+                    tslbMessage.Text = "書き込みエラー";
+                }
+            }
+        }
+
+        //開くボタン
+        private void btReportOpen_Click(object sender, EventArgs e) {
+            ReportOpenFile();
+        }
+
+        private void ReportOpenFile() {
+            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
+                try {
+                    //逆シリアル化でバイナリ形式を取り込む
+#pragma warning disable SYSLIB0011 // 型またはメンバーが旧型式です
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011 // 型またはメンバーが旧型式です
+                    using (FileStream fs
+                        = File.Open(ofdReportFileOpen.FileName, FileMode.Open, FileAccess.Read)) {
+                        listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvCarReport.DataSource = listCarReports;
+                    }
+
+                    foreach (var carReport in listCarReports) {
+                        setcbCarName(carReport.Author);
+                        setcbCarName(carReport.CarName);
+                    }
+
+                }
+                catch (Exception) {
+                    tslbMessage.Text = "ファイル形式が違います";
+                }
+                dgvCarReport.ClearSelection();
+            }
+        }
+
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
+            ReportOpenFile();
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            ReportSaveFile();
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("本当に終了しますか","CarReport", MessageBoxButtons.OKCancel,MessageBoxIcon.Question)== DialogResult.OK)this.Close();
+             //Application.Exit();
         }
     }
 }
