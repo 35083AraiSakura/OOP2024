@@ -2,9 +2,14 @@ using System.ComponentModel;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Diagnostics.Metrics;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
+
+        //設定情報_インスタンス
+        Settings settings = new Settings();
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
@@ -135,6 +140,19 @@ namespace CarReportSystem {
             dgvCarReport.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
             dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
+            //設定の逆シリアル化
+            //try {
+            //    using (var reader = XmlReader.Create("setting.xml")) {
+            //        var serializer = new XmlSerializer(typeof(Settings));
+            //        var setting =serializer.Deserialize(reader) as Settings;
+            //        BackColor = ;
+            //    }
+            //}
+            //catch (Exception) {
+
+            //    throw;
+            //}
+
         }
 
         //押したら表示
@@ -209,7 +227,6 @@ namespace CarReportSystem {
         private void btReportSave_Click(object sender, EventArgs e) {
             ReportSaveFile();
         }
-
         private void ReportSaveFile() {
             if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
                 try {
@@ -231,7 +248,6 @@ namespace CarReportSystem {
         private void btReportOpen_Click(object sender, EventArgs e) {
             ReportOpenFile();
         }
-
         private void ReportOpenFile() {
             if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
                 try {
@@ -258,6 +274,7 @@ namespace CarReportSystem {
             }
         }
 
+
         private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
             ReportOpenFile();
         }
@@ -267,8 +284,29 @@ namespace CarReportSystem {
         }
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("本当に終了しますか","CarReport", MessageBoxButtons.OKCancel,MessageBoxIcon.Question)== DialogResult.OK)this.Close();
-             //Application.Exit();
+            if (MessageBox.Show("本当に終了しますか", "CarReport", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK) this.Close();
+            //Application.Exit();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                BackColor = cdColor.Color;
+                settings.MainForColor = cdColor.Color.ToArgb();
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定のシリアル化
+            try {
+                using (var writer = XmlWriter.Create("setting.xml")) {
+                    var serializer = new XmlSerializer(settings.GetType());
+                    serializer.Serialize(writer, settings);
+                }
+
+            }
+            catch (Exception) {
+                MessageBox.Show("設定ファイル書き込みエラー");
+            }
         }
     }
 }
