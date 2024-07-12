@@ -9,7 +9,7 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
 
         //設定情報_インスタンス
-        Settings settings = new Settings();
+        Settings settings = Settings.getinstance();
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
@@ -140,19 +140,23 @@ namespace CarReportSystem {
             dgvCarReport.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
             dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
-            //設定の逆シリアル化
-            //try {
-            //    using (var reader = XmlReader.Create("setting.xml")) {
-            //        var serializer = new XmlSerializer(typeof(Settings));
-            //        var setting =serializer.Deserialize(reader) as Settings;
-            //        BackColor = ;
-            //    }
-            //}
-            //catch (Exception) {
-
-            //    throw;
-            //}
-
+            if (File.Exists("setting.xml")) {
+                //設定の逆シリアル化
+                try {
+                    using (var reader = XmlReader.Create("setting.xml")) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        var settings = serializer.Deserialize(reader) as Settings;
+                        BackColor = Color.FromArgb(settings.MainForColor);
+                        settings.MainForColor = BackColor.ToArgb();
+                        //BackColor = Color.FromArgb(settings.MainForColor);
+                    }
+                }
+                catch (Exception) {
+                    tslbMessage.Text = "Error:色情報ファイルエラー";
+                }
+            } else {
+                tslbMessage.Text = "Error:色情報ファイルがありません";
+            }
         }
 
         //押したら表示
