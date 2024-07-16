@@ -62,6 +62,8 @@
             色設定ToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
             終了ToolStripMenuItem = new ToolStripMenuItem();
+            ヘルプHToolStripMenuItem = new ToolStripMenuItem();
+            このアプリについてToolStripMenuItem = new ToolStripMenuItem();
             cdColor = new ColorDialog();
             colorDialog1 = new ColorDialog();
             groupBox1.SuspendLayout();
@@ -345,7 +347,7 @@
             dtpDate.CalendarFont = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
             dtpDate.Location = new Point(108, 35);
             dtpDate.Name = "dtpDate";
-            dtpDate.Size = new Size(230, 23);
+            dtpDate.Size = new Size(170, 23);
             dtpDate.TabIndex = 1;
             // 
             // ofdPicFileOpen
@@ -375,7 +377,7 @@
             // 
             btClear.BackColor = Color.Gold;
             btClear.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            btClear.Location = new Point(394, 30);
+            btClear.Location = new Point(414, 24);
             btClear.Name = "btClear";
             btClear.Size = new Size(78, 34);
             btClear.TabIndex = 9;
@@ -385,7 +387,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルFToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルFToolStripMenuItem, ヘルプHToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(755, 24);
@@ -436,6 +438,20 @@
             終了ToolStripMenuItem.Size = new Size(119, 22);
             終了ToolStripMenuItem.Text = "終了";
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
+            // 
+            // ヘルプHToolStripMenuItem
+            // 
+            ヘルプHToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { このアプリについてToolStripMenuItem });
+            ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
+            ヘルプHToolStripMenuItem.Size = new Size(65, 20);
+            ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
+            // 
+            // このアプリについてToolStripMenuItem
+            // 
+            このアプリについてToolStripMenuItem.Name = "このアプリについてToolStripMenuItem";
+            このアプリについてToolStripMenuItem.Size = new Size(180, 22);
+            このアプリについてToolStripMenuItem.Text = "このアプリについて...";
+            このアプリについてToolStripMenuItem.Click += このアプリについてToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -526,5 +542,7 @@
         private ToolStripMenuItem 終了ToolStripMenuItem;
         private ColorDialog cdColor;
         private ColorDialog colorDialog1;
+        private ToolStripMenuItem ヘルプHToolStripMenuItem;
+        private ToolStripMenuItem このアプリについてToolStripMenuItem;
     }
 }
