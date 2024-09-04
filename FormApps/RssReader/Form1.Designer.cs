@@ -31,14 +31,14 @@
             // 
             // tbRssUrl
             // 
-            this.tbRssUrl.Location = new System.Drawing.Point(28, 13);
+            this.tbRssUrl.Location = new System.Drawing.Point(12, 8);
             this.tbRssUrl.Name = "tbRssUrl";
             this.tbRssUrl.Size = new System.Drawing.Size(623, 19);
             this.tbRssUrl.TabIndex = 0;
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(678, 8);
+            this.btGet.Location = new System.Drawing.Point(654, 8);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(75, 23);
             this.btGet.TabIndex = 1;
@@ -50,19 +50,19 @@
             // 
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(28, 60);
+            this.lbRssTitle.Location = new System.Drawing.Point(12, 37);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(725, 112);
+            this.lbRssTitle.Size = new System.Drawing.Size(776, 64);
             this.lbRssTitle.TabIndex = 2;
-            //this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
-            //this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
+            this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(28, 193);
+            this.webBrowser1.Location = new System.Drawing.Point(12, 118);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(725, 245);
+            this.webBrowser1.ScriptErrorsSuppressed = true;
+            this.webBrowser1.Size = new System.Drawing.Size(776, 320);
             this.webBrowser1.TabIndex = 3;
             // 
             // Form1
