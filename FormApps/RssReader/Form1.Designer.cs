@@ -23,24 +23,21 @@
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
-            this.tbRssUrl = new System.Windows.Forms.TextBox();
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.cb_get = new System.Windows.Forms.ComboBox();
+            this.tb_like = new System.Windows.Forms.TextBox();
+            this.bt_like = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tbRssUrl
-            // 
-            this.tbRssUrl.Location = new System.Drawing.Point(12, 8);
-            this.tbRssUrl.Name = "tbRssUrl";
-            this.tbRssUrl.Size = new System.Drawing.Size(623, 19);
-            this.tbRssUrl.TabIndex = 0;
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(654, 8);
+            this.btGet.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btGet.Location = new System.Drawing.Point(366, 13);
             this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(75, 23);
+            this.btGet.Size = new System.Drawing.Size(75, 27);
             this.btGet.TabIndex = 1;
             this.btGet.Text = "取得";
             this.btGet.UseVisualStyleBackColor = true;
@@ -50,43 +47,79 @@
             // 
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(12, 37);
+            this.lbRssTitle.Location = new System.Drawing.Point(447, 12);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(776, 64);
+            this.lbRssTitle.Size = new System.Drawing.Size(341, 112);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
-            // webBrowser1
+            // webView21
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(12, 118);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(776, 320);
-            this.webBrowser1.TabIndex = 3;
+            this.webView21.AllowExternalDrop = true;
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView21.Location = new System.Drawing.Point(12, 145);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(776, 293);
+            this.webView21.TabIndex = 4;
+            this.webView21.ZoomFactor = 1D;
+            // 
+            // cb_get
+            // 
+            this.cb_get.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cb_get.FormattingEnabled = true;
+            this.cb_get.ItemHeight = 19;
+            this.cb_get.Location = new System.Drawing.Point(13, 13);
+            this.cb_get.Name = "cb_get";
+            this.cb_get.Size = new System.Drawing.Size(347, 27);
+            this.cb_get.TabIndex = 5;
+            // 
+            // tb_like
+            // 
+            this.tb_like.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tb_like.Location = new System.Drawing.Point(12, 51);
+            this.tb_like.Name = "tb_like";
+            this.tb_like.Size = new System.Drawing.Size(176, 26);
+            this.tb_like.TabIndex = 6;
+            // 
+            // bt_like
+            // 
+            this.bt_like.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.bt_like.Location = new System.Drawing.Point(209, 48);
+            this.bt_like.Name = "bt_like";
+            this.bt_like.Size = new System.Drawing.Size(75, 31);
+            this.bt_like.TabIndex = 7;
+            this.bt_like.Text = "登録";
+            this.bt_like.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.bt_like);
+            this.Controls.Add(this.tb_like);
+            this.Controls.Add(this.cb_get);
+            this.Controls.Add(this.webView21);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
-            this.Controls.Add(this.tbRssUrl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbRssUrl;
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
+        private System.Windows.Forms.ComboBox cb_get;
+        private System.Windows.Forms.TextBox tb_like;
+        private System.Windows.Forms.Button bt_like;
     }
 }
 
