@@ -9,12 +9,12 @@ namespace SampleEntityFramework {
     internal class Program {
         static void Main(string[] args) {
 
-            AddAuthors();
+            //AddAuthors();
             //AddBooks();
-
-            foreach (var item in GetBooks()) {
-                Console.WriteLine(item.Title/* +" "+ item.Author.Name*/);
-            }
+            DisplayAllBooks();
+            //foreach (var item in GetBooks()) {
+            //    Console.WriteLine(item.Title + " " + item.PublishedYear);
+            //}
             //InsertBooks();
         }
 
@@ -52,6 +52,15 @@ namespace SampleEntityFramework {
                 return db.Books
                     //.Where(book => book.Author.Name.StartsWith("夏目"))
                     .ToList();
+            }
+        }
+
+        static void DisplayAllBooks() {
+            using (var db = new BooksDbContext()) {
+                foreach (var book in db.Books.ToList()) {
+                    Console.WriteLine("{0} {1} {2} {3:yyyy/mm/dd}", book.Title, book.PublishedYear
+                                        , book.Author.Name, book.Author.Birthday);
+                }
             }
         }
 
