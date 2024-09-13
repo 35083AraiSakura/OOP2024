@@ -18,6 +18,7 @@ namespace RssReader {
             public string Link { get; set; }
         }
         List<ItemData> xitems;
+        List<ItemData> cb_items;
 
         WebClient wc;
         string text;
@@ -34,7 +35,7 @@ namespace RssReader {
                 lbRssTitle.Items.Clear();
             }
             //取得
-            if (!cb_get.Text.Contains("LIKE'%rss%'")) {
+            if (!cb_get.Text.Contains("rss")) {
                 text = SetItemsText(cb_get.Text);
             } else {
                 text = cb_get.Text;
@@ -101,7 +102,15 @@ namespace RssReader {
                 default:
                     return lk = null;
             }
+        }
 
+        //お気に入り設定
+        private void bt_like_Click(object sender, EventArgs e) {
+            var txt=tb_like.Text;
+            var link=cb_get.Text;
+            //xitems.
         }
     }
 }
+
+//めも　Array.IndexOf(numbers, 3);

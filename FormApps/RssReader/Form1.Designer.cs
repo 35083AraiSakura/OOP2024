@@ -66,12 +66,12 @@
             // 
             // cb_get
             // 
-            this.cb_get.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cb_get.Font = new System.Drawing.Font("ＭＳ ゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cb_get.FormattingEnabled = true;
-            this.cb_get.ItemHeight = 19;
+            this.cb_get.ItemHeight = 13;
             this.cb_get.Location = new System.Drawing.Point(13, 13);
             this.cb_get.Name = "cb_get";
-            this.cb_get.Size = new System.Drawing.Size(347, 27);
+            this.cb_get.Size = new System.Drawing.Size(347, 21);
             this.cb_get.TabIndex = 5;
             // 
             // tb_like
@@ -91,6 +91,7 @@
             this.bt_like.TabIndex = 7;
             this.bt_like.Text = "登録";
             this.bt_like.UseVisualStyleBackColor = true;
+            this.bt_like.Click += new System.EventHandler(this.bt_like_Click);
             // 
             // Form1
             // 
