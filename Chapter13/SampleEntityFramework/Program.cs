@@ -1,21 +1,65 @@
 ﻿using SampleEntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleEntityFramework {
     internal class Program {
         static void Main(string[] args) {
+            DisplayAllBooks_3();
+            Console.WriteLine();
+            Exercise1_4();
+            Console.WriteLine();
+            Exercise1_5();
 
             //AddAuthors();
             //AddBooks();
-            DisplayAllBooks();
-            //foreach (var item in GetBooks()) {
-            //    Console.WriteLine(item.Title + " " + item.PublishedYear);
-            //}
             //InsertBooks();
+
+            Console.ReadLine();
+        }
+
+        //タイトルの長さ
+        static void DisplayAllBooks_3() {
+            using (var db = new BooksDbContext()) {
+                var books = db.Books.Where(b => b.Title.Length == db.Books.Max(x => x.Title.Length));
+                //db.Books.Select(b => b.Title).Max();
+
+                foreach (var book in books) {
+                    Console.WriteLine(book.Title);
+                }
+
+            }
+        }
+
+        //発行年古い順
+        private static void Exercise1_4() {
+            using (var db = new BooksDbContext()) {
+                var books = db.Books.OrderBy(b => b.PublishedYear).Include(nameof(Author)).Take(3);
+
+                foreach (var book in books) {
+                    Console.WriteLine($"{book.Title} {book.PublishedYear} {book.Author.Name}");
+                }
+            }
+        }
+
+        //タイトルと発行日　著者ごと(降順
+        private static void Exercise1_5() {
+            using (var db = new BooksDbContext()) {
+                var authors = db.Authors.OrderByDescending(a => a.Birthday).ToList();
+                foreach (var author in authors) {
+                    Console.WriteLine($"{author.Name}");
+                    foreach (var book in author.Books) {
+                        Console.WriteLine($"{book.Title} {book.PublishedYear}");
+                    }
+                    Console.WriteLine();
+                }
+            }
+
         }
 
         static void InsertBooks() {
@@ -55,7 +99,7 @@ namespace SampleEntityFramework {
             }
         }
 
-        static void DisplayAllBooks() {
+        static void DisplayAllBooks_2() {
             using (var db = new BooksDbContext()) {
                 foreach (var book in db.Books.ToList()) {
                     Console.WriteLine("{0} {1} {2} {3:yyyy/mm/dd}", book.Title, book.PublishedYear

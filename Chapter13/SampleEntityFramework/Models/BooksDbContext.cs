@@ -12,6 +12,8 @@ namespace SampleEntityFramework.Models {
         // アプリケーション構成ファイルで 'BookesDbContext' 接続文字列を変更してください。
         public BooksDbContext()
             : base("name=BookesDbContext") {
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BooksDbContext,Configuration>());
         }
 
         public DbSet<Book> Books { get; set;}
