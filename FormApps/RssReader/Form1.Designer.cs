@@ -1,5 +1,5 @@
 ﻿namespace RssReader {
-    partial class Form1 {
+    partial class RSS_Reader {
         /// <summary>
         /// 必要なデザイナー変数です。
         /// </summary>
@@ -29,13 +29,17 @@
             this.cb_get = new System.Windows.Forms.ComboBox();
             this.tb_like = new System.Windows.Forms.TextBox();
             this.bt_like = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btGet
             // 
-            this.btGet.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btGet.Location = new System.Drawing.Point(366, 13);
+            this.btGet.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btGet.Location = new System.Drawing.Point(366, 43);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(75, 27);
             this.btGet.TabIndex = 1;
@@ -45,11 +49,12 @@
             // 
             // lbRssTitle
             // 
+            this.lbRssTitle.Font = new System.Drawing.Font("ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbRssTitle.FormattingEnabled = true;
-            this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(447, 12);
+            this.lbRssTitle.ItemHeight = 15;
+            this.lbRssTitle.Location = new System.Drawing.Point(447, 36);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(341, 112);
+            this.lbRssTitle.Size = new System.Drawing.Size(435, 109);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
@@ -58,34 +63,34 @@
             this.webView21.AllowExternalDrop = true;
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView21.Location = new System.Drawing.Point(12, 145);
+            this.webView21.Location = new System.Drawing.Point(12, 154);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(776, 293);
+            this.webView21.Size = new System.Drawing.Size(870, 339);
             this.webView21.TabIndex = 4;
             this.webView21.ZoomFactor = 1D;
             // 
             // cb_get
             // 
-            this.cb_get.Font = new System.Drawing.Font("ＭＳ ゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cb_get.Font = new System.Drawing.Font("ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cb_get.FormattingEnabled = true;
-            this.cb_get.ItemHeight = 13;
-            this.cb_get.Location = new System.Drawing.Point(13, 13);
+            this.cb_get.ItemHeight = 15;
+            this.cb_get.Location = new System.Drawing.Point(12, 43);
             this.cb_get.Name = "cb_get";
-            this.cb_get.Size = new System.Drawing.Size(347, 21);
+            this.cb_get.Size = new System.Drawing.Size(347, 23);
             this.cb_get.TabIndex = 5;
             // 
             // tb_like
             // 
             this.tb_like.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tb_like.Location = new System.Drawing.Point(12, 51);
+            this.tb_like.Location = new System.Drawing.Point(12, 97);
             this.tb_like.Name = "tb_like";
-            this.tb_like.Size = new System.Drawing.Size(176, 26);
+            this.tb_like.Size = new System.Drawing.Size(348, 26);
             this.tb_like.TabIndex = 6;
             // 
             // bt_like
             // 
             this.bt_like.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.bt_like.Location = new System.Drawing.Point(209, 48);
+            this.bt_like.Location = new System.Drawing.Point(366, 97);
             this.bt_like.Name = "bt_like";
             this.bt_like.Size = new System.Drawing.Size(75, 31);
             this.bt_like.TabIndex = 7;
@@ -93,22 +98,52 @@
             this.bt_like.UseVisualStyleBackColor = true;
             this.bt_like.Click += new System.EventHandler(this.bt_like_Click);
             // 
-            // Form1
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルFToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(900, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルFToolStripMenuItem
+            // 
+            this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.終了ToolStripMenuItem});
+            this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // 終了ToolStripMenuItem
+            // 
+            this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了ToolStripMenuItem.Text = "終了";
+            this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
+            // 
+            // RSS_Reader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 505);
             this.Controls.Add(this.bt_like);
             this.Controls.Add(this.tb_like);
             this.Controls.Add(this.cb_get);
             this.Controls.Add(this.webView21);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.Name = "RSS_Reader";
+            this.Text = "RSS_Reader";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +156,9 @@
         private System.Windows.Forms.ComboBox cb_get;
         private System.Windows.Forms.TextBox tb_like;
         private System.Windows.Forms.Button bt_like;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ファイルFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
     }
 }
 

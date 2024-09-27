@@ -12,19 +12,30 @@ using System.Xml.Linq;
 using Windows.UI.Xaml.Controls;
 
 namespace RssReader {
-    public partial class Form1 : Form {
+    public partial class RSS_Reader : Form {
         public class ItemData {
             public string Title { get; set; }
             public string Link { get; set; }
         }
         List<ItemData> xitems;
-        List<ItemData> cb_items;
 
+        private Dictionary<string, string> beginitems;
         WebClient wc;
-        string text;
 
-        public Form1() {
+
+        public RSS_Reader() {
             InitializeComponent();
+
+            beginitems = new Dictionary<string, string> {
+                {"主要","https://news.yahoo.co.jp/rss/topics/top-picks.xml" },
+                {"国際", "https://news.yahoo.co.jp/rss/topics/world.xml"},
+                {"経済", "https://news.yahoo.co.jp/rss/topics/business.xml"},
+                {"エンタメ","https://news.yahoo.co.jp/rss/topics/entertainment.xml" },
+                {"スポーツ", "https://news.yahoo.co.jp/rss/topics/sports.xml"},
+                {"ＩＴ", "https://news.yahoo.co.jp/rss/topics/it.xml"},
+                {"科学", "https://news.yahoo.co.jp/rss/topics/science.xml"},
+                {"地域", "https://news.yahoo.co.jp/rss/topics/local.xml"}
+            };
         }
 
         //取得ボタン
@@ -35,11 +46,15 @@ namespace RssReader {
                 lbRssTitle.Items.Clear();
             }
             //取得
-            if (!cb_get.Text.Contains("rss")) {
-                text = SetItemsText(cb_get.Text);
+            if (beginitems.TryGetValue(cb_get.AccessibilityObject.Value, out var rss_url)) {
+                Display(rss_url);
             } else {
-                text = cb_get.Text;
+                Display(cb_get.Text);
             }
+        }
+
+        //表示するやつの中身
+        public void Display(string text) {
             using (wc = new WebClient()) {
                 var url = wc.OpenRead(text);
                 var xdoc = XDocument.Load(url);
@@ -48,11 +63,11 @@ namespace RssReader {
                     Title = item.Element("title").Value,
                     Link = item.Element("link").Value
                 }).ToList();
+
                 foreach (var item in xitems) {
                     lbRssTitle.Items.Add(item.Title);
                 }
             }
-
         }
 
         //押されたタイトルの記事出す
@@ -63,54 +78,31 @@ namespace RssReader {
 
         //起動
         private void Form1_Load(object sender, EventArgs e) {
-            cb_get.Items.AddRange(new string[] {"主要","国内","国際","経済","エンタメ","スポーツ",
-                                                "ＩＴ","科学","地域"});
-
+            cb_get.Items.AddRange(beginitems.Keys.ToArray());
             cb_get.SelectedIndex = -1;
         }
 
-        private string SetItemsText(string text) {
-            string lk;
-            switch (text) {
-                case "主要":
-                    lk = "https://news.yahoo.co.jp/rss/topics/top-picks.xml";
-                    return lk;
-                case "国内":
-                    lk = "https://news.yahoo.co.jp/rss/topics/domestic.xml";
-                    return lk;
-                case "国際":
-                    lk = "https://news.yahoo.co.jp/rss/topics/world.xml";
-                    return lk;
-                case "経済":
-                    lk = "https://news.yahoo.co.jp/rss/topics/business.xml";
-                    return lk;
-                case "エンタメ":
-                    lk = "https://news.yahoo.co.jp/rss/topics/entertainment.xml";
-                    return lk;
-                case "スポーツ":
-                    lk = "https://news.yahoo.co.jp/rss/topics/sports.xml";
-                    return lk;
-                case "ＩＴ":
-                    lk = "https://news.yahoo.co.jp/rss/topics/it.xml";
-                    return lk;
-                case "科学":
-                    lk = "https://news.yahoo.co.jp/rss/topics/science.xml";
-                    return lk;
-                case "地域":
-                    lk = "https://news.yahoo.co.jp/rss/topics/local.xml";
-                    return lk;
-                default:
-                    return lk = null;
-            }
-        }
 
         //お気に入り設定
         private void bt_like_Click(object sender, EventArgs e) {
-            var txt=tb_like.Text;
-            var link=cb_get.Text;
-            //xitems.
+            if (string.IsNullOrEmpty(tb_like.Text)) {
+                MessageBox.Show("テキストボックスがnullです", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+            } else {
+                var select_title = tb_like.Text;
+                var select_link = cb_get.AccessibilityObject.Value;
+
+                cb_get.Items.Add($"{select_title}");
+                beginitems.Add(select_title, select_link);
+
+                tb_like.Text = null;
+            }
+        }
+
+        //ファイルから終了
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("本当に終了しますか?", "RSS_Reader", MessageBoxButtons.OKCancel,
+                                MessageBoxIcon.Question) == DialogResult.OK) this.Close();
         }
     }
 }
-
-//めも　Array.IndexOf(numbers, 3);
